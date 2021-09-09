@@ -20,7 +20,7 @@ jobs:
               run: php -v
 
             - name: download phpcs
-              run: wget -O phpcs.phar https://cs.symfony.com/download/php-cs-fixer-v2.phar
+              run: wget -O phpcs.phar https://cs.symfony.com/download/php-cs-fixer-v3.phar
 
             - name: make phpcs executable
               run: chmod +x phpcs.phar
