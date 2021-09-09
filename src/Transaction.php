@@ -10,13 +10,30 @@ use ZerosDev\LinkQu\Exceptions\SendableException;
 
 class Transaction extends Base
 {
+    /**
+     * HTTP Requestor client.
+     *
+     * @var ZerosDev\LinkQu\Client
+     */
     protected $client;
 
+    /**
+     * Constructor.
+     *
+     * @param ZerosDev\LinkQu\Client $client
+     */
     public function __construct(Client $client)
     {
         $this->client = $client;
     }
 
+    /**
+     * Create Permata Virtual Account
+     *
+     * @param  Closure $closure
+     *
+     * @return \stdClass|false
+     */
     public function createVaPermata(Closure $closure)
     {
         $closure($this);
@@ -37,6 +54,13 @@ class Transaction extends Base
         return $this->client->post('linkqu-partner/transaction/create/vapermata', $params);
     }
 
+    /**
+     * Create Other Bank Virtual Account
+     *
+     * @param  Closure $closure
+     *
+     * @return \stdClass|false
+     */
     public function createVa(Closure $closure)
     {
         $closure($this);
@@ -57,6 +81,13 @@ class Transaction extends Base
         return $this->client->post('linkqu-partner/transaction/create/va', $params);
     }
 
+    /**
+     * Create Dedicated (Open Amount) Virtual Account
+     *
+     * @param  Closure $closure
+     *
+     * @return \stdClass|false
+     */
     public function createDedicatedVa(Closure $closure)
     {
         $closure($this);
@@ -74,6 +105,13 @@ class Transaction extends Base
         return $this->client->post('linkqu-partner/transaction/create/vadedicated/add', $params);
     }
 
+    /**
+     * Update Dedicated (Open Amount) Virtual Account
+     *
+     * @param  Closure $closure
+     *
+     * @return \stdClass|false
+     */
     public function updateDedicatedVa(Closure $closure)
     {
         $closure($this);
@@ -91,6 +129,13 @@ class Transaction extends Base
         return $this->client->post('linkqu-partner/transaction/create/vadedicated/update', $params);
     }
 
+    /**
+     * Create Retail
+     *
+     * @param  Closure $closure
+     *
+     * @return \stdClass|false
+     */
     public function createRetail(Closure $closure)
     {
         $closure($this);
@@ -111,6 +156,13 @@ class Transaction extends Base
         return $this->client->post('linkqu-partner/transaction/create/retail', $params);
     }
 
+    /**
+     * Create QRIS
+     *
+     * @param  Closure $closure
+     *
+     * @return \stdClass|false
+     */
     public function createQris(Closure $closure)
     {
         $closure($this);
@@ -130,6 +182,13 @@ class Transaction extends Base
         return $this->client->post('linkqu-partner/transaction/create/qris', $params);
     }
 
+    /**
+     * Create OVO Push
+     *
+     * @param  Closure $closure
+     *
+     * @return \stdClass|false
+     */
     public function createOvoPush(Closure $closure)
     {
         $closure($this);
@@ -158,6 +217,13 @@ class Transaction extends Base
         return $this->client->post('linkqu-partner/transaction/create/ovopush', $params);
     }
 
+    /**
+     * Create E-Wallet Payment
+     *
+     * @param  Closure $closure
+     *
+     * @return \stdClass|false
+     */
     public function createPaymentEwallet(Closure $closure)
     {
         $closure($this);

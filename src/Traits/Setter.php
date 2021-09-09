@@ -40,7 +40,7 @@ trait Setter
         return $this;
     }
 
-    public function setDebug(bool $debug)
+    public function setDebug(bool $debug = true)
     {
         $this->debug = $debug;
         return $this;
@@ -74,25 +74,25 @@ trait Setter
         return $this;
     }
 
-    public function setCustomerPhone($customerPhone)
+    public function setCustomerPhone(string $customerPhone)
     {
         $this->customerPhone = $customerPhone;
         return $this;
     }
 
-    public function setCustomerEmail($customerEmail)
+    public function setCustomerEmail(string $customerEmail)
     {
         $this->customerEmail = $customerEmail;
         return $this;
     }
 
-    public function setCustomerName($customerName)
+    public function setCustomerName(string $customerName)
     {
         $this->customerName = $customerName;
         return $this;
     }
 
-    public function setRetailCode($retailCode)
+    public function setRetailCode(string $retailCode)
     {
         $this->retailCode = $retailCode;
         return $this;
@@ -104,19 +104,19 @@ trait Setter
         return $this;
     }
 
-    public function setEwalletPhone($eWalletPhone)
+    public function setEwalletPhone(string $eWalletPhone)
     {
         $this->eWalletPhone = $eWalletPhone;
         return $this;
     }
 
-    public function setBillTitle($billTitle)
+    public function setBillTitle(string $billTitle)
     {
         $this->billTitle = $billTitle;
         return $this;
     }
 
-    public function setItem($name, $price, $image)
+    public function setItem(string $name, int $price, string $image)
     {
         $this->items[] = [
             'name'  => $name,

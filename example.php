@@ -15,18 +15,18 @@ $linkqu = new Client(function ($client) {
 
 $partnerRef = '54321';
 
-$admin = $linkqu->administration();
+// $admin = $linkqu->administration();
 
 // print_r($admin->banks());
 // print_r($admin->emoney());
 // print_r($admin->resumeAccount());
 
-$report = $linkqu->report();
+// $report = $linkqu->report();
 
 // print_r($report->status($partnerRef));
 // print_r($report->reports('2020-02-10', '2020-02-13'));
 
-$trx = $linkqu->transaction();
+// $trx = $linkqu->transaction();
 
 // print_r($trx->createVa(function($trx) {
 //     $trx->setAmount(10000)
@@ -98,9 +98,8 @@ $trx = $linkqu->transaction();
 //         ->setCustomerEmail('email@customer.com')
 //         ->setEwalletPhone('081234567890')
 //         ->setBillTitle('Tagihan Belanja')
-//         ->setItemName(['Nama Item 1', 'Nama Item 2'])
-//         ->setItemImageUrl(['https://domain.com/image1.jpg', 'https://domain.com/image2.jpg'])
-//         ->setItemPrice([10000, 20000]);
+//         ->setItem('Nama Item 1', 10000, 'https://google.com/image1.jpg')
+//         ->setItem('Nama Item 2', 20000, 'https://google.com/image2.jpg');
 // }));
 
 // print_r($trx->createPaymentEwallet(function($trx) {
@@ -114,6 +113,6 @@ $trx = $linkqu->transaction();
 //         ->setRetailCode('PAYDANA')
 //         ->setEwalletPhone('081234567890')
 //         ->setBillTitle('Tagihan Belanja')
-//         ->setItem('Nama Item 1', 10000, 'https://gogole')
-//         ->setItem('Nama Item 2', 10000, 'https://gogole');
+//         ->setItem('Nama Item 1', 10000, 'https://google.com/image1.jpg')
+//         ->setItem('Nama Item 2', 20000, 'https://google.com/image2.jpg');
 // }));
