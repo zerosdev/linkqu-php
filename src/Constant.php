@@ -4,8 +4,8 @@ namespace ZerosDev\LinkQu;
 
 class Constant
 {
-	const DEVELOPMENT = 'development';
-	const PRODUCTION = 'production';
-	const URL_DEVELOPMENT = 'https://gateway-dev.linkqu.id';
-	const URL_PRODUCTION = 'https://gateway-prod-a2.linkqu.id';
+    const DEVELOPMENT = 'development';
+    const PRODUCTION = 'production';
+    const URL_DEVELOPMENT = 'https://gateway-dev.linkqu.id';
+    const URL_PRODUCTION = 'https://gateway-prod-a2.linkqu.id';
 }

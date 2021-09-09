@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Facade as LaravelFacade;
 
 class Facade extends LaravelFacade
 {
-	protected function getFacadeAccessor()
-	{
-		return 'LinkQu';
-	}
+    protected function getFacadeAccessor()
+    {
+        return 'LinkQu';
+    }
 }
