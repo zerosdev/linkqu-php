@@ -74,6 +74,25 @@ class Client extends Base
     }
 
     /**
+     * Instance kelas Transfer.
+     * Untuk menjalankan transaksi transfer bank.
+     *
+     * @param Closure|null $closure
+     *
+     * @return Transfer
+     */
+    public function transfer(Closure $closure = null)
+    {
+        $transfer = new Transfer($this);
+
+        if ($closure !== null) {
+            $closure($transfer);
+        }
+
+        return $transfer;
+    }
+
+    /**
      * Instance kelas Report.
      * Untuk pengecekan transaksi pembayaran setelah pembayaran.
      *

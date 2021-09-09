@@ -4,51 +4,53 @@ declare(strict_types=1);
 
 namespace ZerosDev\LinkQu\Traits;
 
+use ZerosDev\LinkQu\Constant;
+
 trait Getter
 {
     public function connector()
     {
-        return $this->connector;
+        return $this->connector ?? null;
     }
 
     public function mode()
     {
-        return $this->mode;
+        return $this->mode ?? Constant::DEVELOPMENT;
     }
 
     public function clientId()
     {
-        return $this->clientId;
+        return $this->clientId ?? null;
     }
 
     public function clientSecret()
     {
-        return $this->clientSecret;
+        return $this->clientSecret ?? null;
     }
 
     public function username()
     {
-        return $this->username;
+        return $this->username ?? null;
     }
 
     public function pin()
     {
-        return $this->pin;
+        return $this->pin ?? null;
     }
 
     public function debug()
     {
-        return $this->debug;
+        return $this->debug ?? false;
     }
 
     public function errors()
     {
-        return $this->errors;
+        return $this->errors ?? [];
     }
 
     public function debugs()
     {
-        return $this->debugs;
+        return $this->debugs ?? [];
     }
 
     public function expired()
@@ -109,5 +111,15 @@ trait Getter
     public function items()
     {
         return $this->items ?? [];
+    }
+
+    public function accountNumber()
+    {
+        return $this->accountNumber ?? null;
+    }
+
+    public function inquiryRef()
+    {
+        return $this->inquiryRef;
     }
 }
