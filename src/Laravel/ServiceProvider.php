@@ -4,5 +4,5 @@ namespace ZerosDev\LinkQu\Laravel;
 
 class ServiceProvider
 {
-	
+    // ..
 }

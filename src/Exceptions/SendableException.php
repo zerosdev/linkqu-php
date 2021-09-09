@@ -6,13 +6,13 @@ use Exception;
 
 class SendableException extends Exception
 {
-	public function report()
-	{
-		
-	}
+    public function report()
+    {
+        // ..
+    }
 
-	public function render()
-	{
-
-	}
+    public function render()
+    {
+        // ..
+    }
 }

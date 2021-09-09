@@ -4,48 +4,48 @@ namespace ZerosDev\LinkQu\Traits;
 
 trait Getter
 {
-	public function connector()
-	{
-		return $this->connector;
-	}
-	
-	public function mode()
-	{
-		return $this->mode;
-	}
+    public function connector()
+    {
+        return $this->connector;
+    }
+    
+    public function mode()
+    {
+        return $this->mode;
+    }
 
-	public function clientId()
-	{
-		return $this->clientId;
-	}
+    public function clientId()
+    {
+        return $this->clientId;
+    }
 
-	public function clientSecret()
-	{
-		return $this->clientSecret;
-	}
+    public function clientSecret()
+    {
+        return $this->clientSecret;
+    }
 
-	public function username()
-	{
-		return $this->username;
-	}
+    public function username()
+    {
+        return $this->username;
+    }
 
-	public function pin()
-	{
-		return $this->pin;
-	}
+    public function pin()
+    {
+        return $this->pin;
+    }
 
-	public function debug()
-	{
-		return $this->debug;
-	}
+    public function debug()
+    {
+        return $this->debug;
+    }
 
-	public function errors()
-	{
-		return $this->errors;
-	}
+    public function errors()
+    {
+        return $this->errors;
+    }
 
-	public function debugs()
-	{
-		return $this->debugs;
-	}
+    public function debugs()
+    {
+        return $this->debugs;
+    }
 }
