@@ -2,7 +2,12 @@
 
 namespace ZerosDev\LinkQu\Laravel;
 
-class Facade
+use Illuminate\Support\Facades\Facade as LaravelFacade;
+
+class Facade extends LaravelFacade
 {
-	
+	protected function getFacadeAccessor()
+	{
+		return 'LinkQu';
+	}
 }
