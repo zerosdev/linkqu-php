@@ -142,6 +142,16 @@ class Client extends Base
     }
 
     /**
+     * Cek jika ada error
+     *
+     * @return boolean
+     */
+    public function hasError()
+    {
+        return count($this->errors) > 0;
+    }
+
+    /**
      * Jalankan POST request.
      *
      * @param string $endpoint
