@@ -35,7 +35,7 @@
                 "ZerosDev\\LinkQu\\Laravel\\ServiceProvider"
             ],
             "aliases": {
-                "LinkQu": "ZerosDev\\LinkQu\\Laravel\\ServiceProvider"
+                "LinkQu": "ZerosDev\\LinkQu\\Laravel\\Facade"
             }
         }
     }
