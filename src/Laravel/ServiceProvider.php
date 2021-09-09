@@ -19,7 +19,7 @@ class ServiceProvider extends LaravelServiceProvider implements DeferrableProvid
     public function register()
     {
         $this->app->singleton(Client::class, function ($app) {
-            return new Client(function($client) {
+            return new Client(function ($client) {
                 $client->setMode(config('linkqu.mode'))
                     ->setClientId(config('linkqu.client_id'))
                     ->setClientSecret(config('linkqu.client_secret'))

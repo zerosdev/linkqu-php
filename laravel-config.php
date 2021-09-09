@@ -1,7 +1,7 @@
 <?php
 
 return [
-    
+
     /**
      * API Integration Mode
      * Available: "development", "production"
@@ -27,5 +27,5 @@ return [
      * API PIN
      */
     'pin'           => env('LINKQU_PIN', 'pin'),
-    
+
 ];
