@@ -2,26 +2,12 @@
 
 namespace ZerosDev\LinkQu;
 
-use Closure;
-use Exception;
+use Closure, Exception;
 use ZerosDev\LinkQu\Exceptions\SendableException;
-use ZerosDev\LinkQu\Traits\Setter;
-use ZerosDev\LinkQu\Traits\Getter;
 use GuzzleHttp\Client as GuzzleClient;
 
-class Client
+class Client extends Base
 {
-    use Setter, Getter;
-
-    protected $connector;
-    protected $clientId;
-    protected $clientSecret;
-    protected $username;
-    protected $pin;
-    protected $debug = false;
-    public $errors = [];
-    public $debugs = [];
-
     public function __construct(Closure $closure)
     {
         $this->setMode(Constant::DEVELOPMENT);
@@ -29,15 +15,14 @@ class Client
         $closure($this);
 
         $this->connector = new GuzzleClient([
-            'base_uri'		=> (strtolower($this->mode) == Constant::PRODUCTION)
+            'base_uri'      => (strtolower($this->mode) == Constant::PRODUCTION)
                 ? Constant::URL_PRODUCTION
                 : Constant::URL_DEVELOPMENT,
-            'http_errors'	=> false,
-            'headers'		=> [
-                'Content-Type'	=> 'application/x-www-form-urlencoded',
-                'Accept'		=> 'application/json',
-                'client-id'		=> $this->clientId,
-                'client-secret'	=> $this->clientSecret
+            'http_errors'   => false,
+            'headers'       => [
+                'Accept'        => 'application/json',
+                'client-id'     => $this->client_id,
+                'client-secret' => $this->client_secret
             ]
         ]);
     }
@@ -46,10 +31,10 @@ class Client
     {
         $admin = new Administration($this);
 
-        if ($closure !== null) {
+        if( $closure !== null ) {
             $closure($admin);
         }
-        
+
         return $admin;
     }
 
@@ -57,16 +42,16 @@ class Client
     {
         $transaction = new Transaction($this);
 
-        if ($closure !== null) {
+        if( $closure !== null ) {
             $closure($transaction);
         }
-        
+
         return $transaction;
     }
 
     public function addDebug($message)
     {
-        if ($this->debug) {
+        if( $this->debug ) {
             $this->debugs[] = $message;
         }
 
@@ -81,5 +66,44 @@ class Client
         ];
 
         return $this;
+    }
+
+    public function post($endpoint, $params = [], $headers = [])
+    {
+        try {
+            $response = $this->connector->post(ltrim($endpoint, '/'), [
+                'json'          => $params,
+                'headers'       => $headers
+            ]);
+            $body = $response->getBody()->getContents();
+            $data = json_decode($body);
+            if( json_last_error() !== JSON_ERROR_NONE ) {
+                $this->addDebug($body);
+                throw new Exception("Invalid JSON response");
+            }
+            return $data;
+        } catch(Exception $e) {
+            $this->addError($e->getMessage(), ($e instanceof SendableException));
+            return false;
+        }
+    }
+
+    public function get($endpoint, $params = [], $headers = [])
+    {
+        try {
+            $response = $this->connector->get(ltrim($endpoint, '/').'?'.http_build_query($params), [
+                'headers'   => $headers
+            ]);
+            $body = $response->getBody()->getContents();
+            $data = json_decode($body);
+            if( json_last_error() !== JSON_ERROR_NONE ) {
+                $this->addDebug($body);
+                throw new Exception("Invalid JSON response");
+            }
+            return $data;
+        } catch(Exception $e) {
+            $this->addError($e->getMessage(), ($e instanceof SendableException));
+            return false;
+        }
     }
 }
