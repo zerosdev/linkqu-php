@@ -59,7 +59,7 @@ class Report extends Base
     public function reports(string $startDate, string $endDate, int $limit = 10, int $offset = 0)
     {
         $offset = ($offset < 0) ? 0 : $offset;
-        $limit = ($limit < 0) ? 0 : $limit;
+        $limit = ($limit < 0) ? 10 : $limit;
 
         $startDate = DateTime::createFromFormat('Y-m-d', $startDate)
             ->setTimezone(new DateTimeZone('Asia/Jakarta'));
