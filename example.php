@@ -10,7 +10,8 @@ $linkqu = new Client(function ($client) {
         ->setClientId('testing')
         ->setClientSecret('123')
         ->setUsername('LI307GXIN')
-        ->setPin('2K2NPCBBNNTovgB');
+        ->setPin('2K2NPCBBNNTovgB')
+        ->setDebug(true);
 });
 
 $partnerRef = '54321';

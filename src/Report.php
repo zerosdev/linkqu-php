@@ -9,7 +9,7 @@ use DateTimeZone;
 use Exception;
 use ZerosDev\LinkQu\Exceptions\SendableException;
 
-class Report
+class Report extends Base
 {
     /**
      * HTTP Requestor client.

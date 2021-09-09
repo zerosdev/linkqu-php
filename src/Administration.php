@@ -7,7 +7,7 @@ namespace ZerosDev\LinkQu;
 use Exception;
 use ZerosDev\LinkQu\Exceptions\SendableException;
 
-class Administration
+class Administration extends Base
 {
     /**
      * HTTP Requestor client.

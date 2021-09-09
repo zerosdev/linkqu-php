@@ -8,7 +8,7 @@ use Exception;
 use Closure;
 use ZerosDev\LinkQu\Exceptions\SendableException;
 
-class Transfer
+class Transfer extends Base
 {
     /**
      * HTTP Requestor client.
