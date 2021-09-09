@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ZerosDev\LinkQu;
 
 use DateTime;
+use DateTimeZone;
 use Exception;
 use ZerosDev\LinkQu\Exceptions\SendableException;
 
@@ -60,7 +61,8 @@ class Report
         $offset = ($offset < 0) ? 0 : $offset;
         $limit = ($limit < 0) ? 0 : $limit;
 
-        $startDate = DateTime::createFromFormat('Y-m-d', $startDate);
+        $startDate = DateTime::createFromFormat('Y-m-d', $startDate)
+            ->setTimezone(new DateTimeZone('Asia/Jakarta'));
         $errors = DateTime::getLastErrors();
 
         if (($errors['warning_count'] + $errors['error_count']) > 0) {
@@ -68,7 +70,8 @@ class Report
             return false;
         }
 
-        $endDate = DateTime::createFromFormat('Y-m-d', $endDate);
+        $endDate = DateTime::createFromFormat('Y-m-d', $endDate)
+            ->setTimezone(new DateTimeZone('Asia/Jakarta'));
         $errors = DateTime::getLastErrors();
 
         if (($errors['warning_count'] + $errors['error_count']) > 0) {
