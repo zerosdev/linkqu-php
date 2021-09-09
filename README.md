@@ -15,31 +15,13 @@ Integration Kit for LinkQu.id
 
 > For installation on Laravel 5.5+, **SKIP steps 2 & 3** because we have used the Package Discovery feature, Laravel will automatically register the Service Provider and Alias during installation.
 
-2. Open your **config/app.php** and add this code to the providers array, it will looks like:
-<pre><code>'providers' => [
-
-      // other providers
-
-      ZerosDev\LinkQu\Laravel\ServiceProvider::class,
-
-],</code></pre>
-
-3. Add this code to your class aliases array
-<pre><code>'aliases' => [
-
-      // other aliases
-
-      'LinkQu' => ZerosDev\LinkQu\Laravel\Facade::class,
-
-],</code></pre>
-
-4. Run command
+2. Run command
 <pre><code>composer dump-autoload</code></pre>
 
-5. Then
+3. Then
 <pre><code>php artisan vendor:publish --provider="ZerosDev\LinkQu\Laravel\ServiceProvider"</code></pre>
 
-6. Edit **config/linkqu.php** and put your API credentials
+4. Edit **config/linkqu.php** and put your API credentials
 
 ## Basic Usage
 
