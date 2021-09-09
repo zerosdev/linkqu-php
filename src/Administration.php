@@ -28,6 +28,7 @@ class Administration
 
     /**
      * Get data bank.
+     * Untuk mendapatkan data bank aktif beserta kode bank.
      *
      * @return \stdClass|false
      */
@@ -40,7 +41,8 @@ class Administration
     }
 
     /**
-     * Get data emoney
+     * Get data emoney.
+     * Untuk mendapatkan data reload emoney aktif beserta kode bank.
      *
      * @return \stdClass|false
      */
@@ -56,6 +58,7 @@ class Administration
 
     /**
      * Get data resume account.
+     * Untuk melihat resume akun.
      *
      * @return \stdClass|false
      */

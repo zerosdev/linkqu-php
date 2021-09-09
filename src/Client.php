@@ -11,6 +11,11 @@ use GuzzleHttp\Client as GuzzleClient;
 
 class Client extends Base
 {
+    /**
+     * Constructor.
+     *
+     * @param Closure $closure
+     */
     public function __construct(Closure $closure)
     {
         $this->setMode(Constant::DEVELOPMENT);
@@ -30,6 +35,14 @@ class Client extends Base
         ]);
     }
 
+    /**
+     * Instance kelas Administration.
+     * Untuk mendapatkan data bank aktif beserta kode bank.
+     *
+     * @param Closure|null $closure
+     *
+     * @return Administration
+     */
     public function administration(Closure $closure = null)
     {
         $admin = new Administration($this);
@@ -41,6 +54,14 @@ class Client extends Base
         return $admin;
     }
 
+    /**
+     * Instance kelas Transaction.
+     * Untuk menjalankan transaksi pembayaran serta refund.
+     *
+     * @param Closure|null $closure
+     *
+     * @return Transaction
+     */
     public function transaction(Closure $closure = null)
     {
         $transaction = new Transaction($this);
@@ -52,6 +73,14 @@ class Client extends Base
         return $transaction;
     }
 
+    /**
+     * Instance kelas Report.
+     * Untuk pengecekan transaksi pembayaran setelah pembayaran.
+     *
+     * @param Closure|null $closure
+     *
+     * @return Transaction
+     */
     public function report(Closure $closure = null)
     {
         $report = new Report($this);
@@ -63,7 +92,12 @@ class Client extends Base
         return $report;
     }
 
-    public function addDebug($message)
+    /**
+     * Tambahkan debug message.
+     *
+     * @param string $message
+     */
+    public function addDebug(string $message)
     {
         if ($this->debug) {
             $this->debugs[] = $message;
@@ -72,29 +106,47 @@ class Client extends Base
         return $this;
     }
 
-    public function addError($message, bool $safe_to_client = false)
+    /**
+     * Tambahkan error message.
+     *
+     * @param string $message
+     * @param bool   $safeToClient
+     */
+    public function addError(string $message, bool $safeToClient = false)
     {
         $this->errors[] = [
             'message' => $message,
-            'safe_to_client' => $safe_to_client
+            'safe_to_client' => $safeToClient
         ];
 
         return $this;
     }
 
-    public function post($endpoint, array $params = [], array $headers = [])
+    /**
+     * Jalankan POST request.
+     *
+     * @param string $endpoint
+     * @param array  $params
+     * @param array  $headers
+     *
+     * @return \stdClass|false
+     */
+    public function post(string $endpoint, array $params = [], array $headers = [])
     {
         try {
             $response = $this->connector->post(ltrim($endpoint, '/'), [
-                'json'          => $params,
-                'headers'       => $headers
+                'json' => $params,
+                'headers' => $headers
             ]);
+
             $body = $response->getBody()->getContents();
             $data = json_decode($body);
+
             if (json_last_error() !== JSON_ERROR_NONE) {
                 $this->addDebug($body);
                 throw new Exception("Invalid JSON response");
             }
+
             return $data;
         } catch (Exception $e) {
             $this->addError($e->getMessage(), ($e instanceof SendableException));
@@ -102,6 +154,15 @@ class Client extends Base
         }
     }
 
+    /**
+     * Jalankan GET request.
+     *
+     * @param string $endpoint
+     * @param array  $params
+     * @param array  $headers
+     *
+     * @return \stdClass|false
+     */
     public function get($endpoint, array $params = [], array $headers = [])
     {
         try {
