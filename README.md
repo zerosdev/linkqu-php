@@ -11,12 +11,10 @@ Integration Kit for LinkQu.id
 1. Run command
 <pre><code>composer require zerosdev/linkqu-php</code></pre>
 
-### The following steps only needed if you are using Laravel
-
-> For installation on Laravel 5.5+, **SKIP steps 2 & 3** because we have used the Package Discovery feature, Laravel will automatically register the Service Provider and Alias during installation.
-
 2. Run command
 <pre><code>composer dump-autoload</code></pre>
+
+### The following steps only needed if you are using Laravel
 
 3. Then
 <pre><code>php artisan vendor:publish --provider="ZerosDev\LinkQu\Laravel\ServiceProvider"</code></pre>
