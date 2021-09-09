@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace ZerosDev\LinkQu\Traits;
 
@@ -8,7 +10,7 @@ trait Getter
     {
         return $this->connector;
     }
-    
+
     public function mode()
     {
         return $this->mode;

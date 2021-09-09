@@ -1,8 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace ZerosDev\LinkQu;
 
-use Closure, Exception;
+use Closure;
+use Exception;
 use ZerosDev\LinkQu\Exceptions\SendableException;
 use GuzzleHttp\Client as GuzzleClient;
 
@@ -31,7 +34,7 @@ class Client extends Base
     {
         $admin = new Administration($this);
 
-        if( $closure !== null ) {
+        if ($closure !== null) {
             $closure($admin);
         }
 
@@ -42,7 +45,7 @@ class Client extends Base
     {
         $transaction = new Transaction($this);
 
-        if( $closure !== null ) {
+        if ($closure !== null) {
             $closure($transaction);
         }
 
@@ -51,7 +54,7 @@ class Client extends Base
 
     public function addDebug($message)
     {
-        if( $this->debug ) {
+        if ($this->debug) {
             $this->debugs[] = $message;
         }
 
@@ -77,12 +80,12 @@ class Client extends Base
             ]);
             $body = $response->getBody()->getContents();
             $data = json_decode($body);
-            if( json_last_error() !== JSON_ERROR_NONE ) {
+            if (json_last_error() !== JSON_ERROR_NONE) {
                 $this->addDebug($body);
                 throw new Exception("Invalid JSON response");
             }
             return $data;
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             $this->addError($e->getMessage(), ($e instanceof SendableException));
             return false;
         }
@@ -96,12 +99,12 @@ class Client extends Base
             ]);
             $body = $response->getBody()->getContents();
             $data = json_decode($body);
-            if( json_last_error() !== JSON_ERROR_NONE ) {
+            if (json_last_error() !== JSON_ERROR_NONE) {
                 $this->addDebug($body);
                 throw new Exception("Invalid JSON response");
             }
             return $data;
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             $this->addError($e->getMessage(), ($e instanceof SendableException));
             return false;
         }
