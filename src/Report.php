@@ -61,11 +61,18 @@ class Report
         $limit = ($limit < 0) ? 0 : $limit;
 
         $startDate = DateTime::createFromFormat('Y-m-d', $startDate);
+        $errors = DateTime::getLastErrors();
+
+        if (($errors['warning_count'] + $errors['error_count']) > 0) {
+            $this->client->addError('Invalid date format supplied for startDate. Please use YYYY-MM-DD format.', false);
+            return false;
+        }
+
         $endDate = DateTime::createFromFormat('Y-m-d', $endDate);
         $errors = DateTime::getLastErrors();
 
         if (($errors['warning_count'] + $errors['error_count']) > 0) {
-            $this->client->addError('Invalid date format supplied start date and end date', false);
+            $this->client->addError('Invalid date format supplied for endDate. Please use YYYY-MM-DD format.', false);
             return false;
         }
 
