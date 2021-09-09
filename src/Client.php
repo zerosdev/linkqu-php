@@ -24,8 +24,8 @@ class Client extends Base
             'http_errors'   => false,
             'headers'       => [
                 'Accept'        => 'application/json',
-                'client-id'     => $this->client_id,
-                'client-secret' => $this->client_secret
+                'client-id'     => $this->clientId,
+                'client-secret' => $this->clientSecret
             ]
         ]);
     }
@@ -52,6 +52,17 @@ class Client extends Base
         return $transaction;
     }
 
+    public function report(Closure $closure = null)
+    {
+        $report = new Report($this);
+
+        if ($closure !== null) {
+            $closure($report);
+        }
+
+        return $report;
+    }
+
     public function addDebug($message)
     {
         if ($this->debug) {
@@ -71,7 +82,7 @@ class Client extends Base
         return $this;
     }
 
-    public function post($endpoint, $params = [], $headers = [])
+    public function post($endpoint, array $params = [], array $headers = [])
     {
         try {
             $response = $this->connector->post(ltrim($endpoint, '/'), [
@@ -91,18 +102,21 @@ class Client extends Base
         }
     }
 
-    public function get($endpoint, $params = [], $headers = [])
+    public function get($endpoint, array $params = [], array $headers = [])
     {
         try {
             $response = $this->connector->get(ltrim($endpoint, '/').'?'.http_build_query($params), [
-                'headers'   => $headers
+                'headers' => $headers
             ]);
+
             $body = $response->getBody()->getContents();
             $data = json_decode($body);
+
             if (json_last_error() !== JSON_ERROR_NONE) {
                 $this->addDebug($body);
                 throw new Exception("Invalid JSON response");
             }
+
             return $data;
         } catch (Exception $e) {
             $this->addError($e->getMessage(), ($e instanceof SendableException));

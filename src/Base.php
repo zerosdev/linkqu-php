@@ -14,8 +14,8 @@ class Base
 
     protected $connector;
     protected $mode;
-    protected $client_id;
-    protected $client_secret;
+    protected $clientId;
+    protected $clientSecret;
     protected $username;
     protected $pin;
     protected $debug = false;
