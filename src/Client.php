@@ -11,6 +11,11 @@ use GuzzleHttp\Client as GuzzleClient;
 
 class Client extends Base
 {
+    protected $administrationInstance;
+    protected $transactionInstance;
+    protected $transferInstance;
+    protected $reportInstance;
+    
     /**
      * Constructor.
      *
@@ -45,13 +50,15 @@ class Client extends Base
      */
     public function administration(Closure $closure = null)
     {
-        $admin = new Administration($this);
+        $this->administrationInstance = ($this->administrationInstance === null)
+            ? new Administration($this)
+            : $this->administrationInstance;
 
         if ($closure !== null) {
-            $closure($admin);
+            $closure($this->administrationInstance);
         }
 
-        return $admin;
+        return $this->administrationInstance;
     }
 
     /**
@@ -64,13 +71,15 @@ class Client extends Base
      */
     public function transaction(Closure $closure = null)
     {
-        $transaction = new Transaction($this);
+        $this->transactionInstance = ($this->transactionInstance === null)
+            ? new Transaction($this)
+            : $this->transactionInstance;
 
         if ($closure !== null) {
-            $closure($transaction);
+            $closure($this->transactionInstance);
         }
 
-        return $transaction;
+        return $this->transactionInstance;
     }
 
     /**
@@ -83,13 +92,15 @@ class Client extends Base
      */
     public function transfer(Closure $closure = null)
     {
-        $transfer = new Transfer($this);
+        $this->transferInstance = ($this->transferInstance === null)
+            ? new Transfer($this)
+            : $this->transferInstance;
 
         if ($closure !== null) {
-            $closure($transfer);
+            $closure($this->transferInstance);
         }
 
-        return $transfer;
+        return $this->transferInstance;
     }
 
     /**
@@ -102,13 +113,15 @@ class Client extends Base
      */
     public function report(Closure $closure = null)
     {
-        $report = new Report($this);
+        $this->reportInstance = ($this->reportInstance === null)
+            ? new Report($this)
+            : $this->reportInstance;
 
         if ($closure !== null) {
-            $closure($report);
+            $closure($this->reportInstance);
         }
 
-        return $report;
+        return $this->reportInstance;
     }
 
     /**
