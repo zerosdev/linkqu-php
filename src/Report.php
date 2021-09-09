@@ -29,6 +29,7 @@ class Report
 
     /**
      * Cek status transaksi.
+     * Digunakan untuk pengecekan transaksi pembayaran setelah pembayaran.
      *
      * @return \stdClass|false
      */
@@ -47,10 +48,10 @@ class Report
      * Report Transaction.
      * Digunakan untuk pengecekan laporan transaksi berdasarkan range tanggal tertentu.
      *
-     * @param  string $startDate
-     * @param  string $endDate
-     * @param  int    $limit
-     * @param  int    $offset
+     * @param string $startDate
+     * @param string $endDate
+     * @param int    $limit
+     * @param int    $offset
      *
      * @return \stdClass|false
      */
