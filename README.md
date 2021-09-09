@@ -1,5 +1,5 @@
 # linkqu-php
-Integration Kit for LinkQu.id
+Unofficial Integration Kit for LinkQu.id
 
 ## Requirements
 - PHP v7.0.0+
