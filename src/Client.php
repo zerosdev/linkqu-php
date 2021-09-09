@@ -15,7 +15,7 @@ class Client extends Base
     protected $transactionInstance;
     protected $transferInstance;
     protected $reportInstance;
-    
+
     /**
      * Constructor.
      *
