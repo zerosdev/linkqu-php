@@ -47,8 +47,8 @@ class YourController extends Controller
                 ->setBankCode('014');
         });
 
-        if( $linkqu->hasError() ) {
-            print_r($linkqu->errors());
+        if( LinkQu::hasError() ) {
+            print_r(LinkQu::errors());
         } else {
             print_r($result);
         }
