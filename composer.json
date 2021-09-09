@@ -1,6 +1,6 @@
 {
     "name": "zerosdev/linkqu-php",
-    "description": "Integration Kit for LinkQu.id",
+    "description": "Unofficial Integration Kit for LinkQu.id",
     "type": "library",
     "require": {
         "guzzlehttp/guzzle": "^7.0.0",
@@ -8,6 +8,11 @@
         "ext-json": "*"
     },
     "license": "MIT",
+    "homepage": "https://linkqu.id",
+    "support": {
+        "issues": "https://github.com/zerosdev/linkqu-php/issues",
+        "source": "https://github.com/zerosdev/linkqu-php"
+    },
     "authors": [
         {
             "name": "ZerosDev",
