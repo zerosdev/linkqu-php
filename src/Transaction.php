@@ -1,8 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace ZerosDev\LinkQu;
 
-use Closure, Exception;
+use Closure;
+use Exception;
 use ZerosDev\LinkQu\Exceptions\SendableException;
 
 class Transaction extends Base
@@ -146,7 +149,7 @@ class Transaction extends Base
             'bill_title'        => $this->billTitle(),
         ];
 
-        foreach( $this->items() as $i => $item ) {
+        foreach ($this->items() as $i => $item) {
             $params['item_name'][$i] = $item['name'];
             $params['item_price'][$i] = $item['price'];
             $params['item_image_url'][$i] = $item['image'];
@@ -174,7 +177,7 @@ class Transaction extends Base
             'bill_title'        => $this->billTitle(),
         ];
 
-        foreach( $this->items() as $i => $item ) {
+        foreach ($this->items() as $i => $item) {
             $params['item_name'][$i] = $item['name'];
             $params['item_price'][$i] = $item['price'];
             $params['item_image_url'][$i] = $item['image'];
