@@ -84,7 +84,7 @@ $finder = Finder::create()
     ->in(__DIR__)
     ->exclude($directories);
     
-return Config::create()
+return (new Config())
     ->setRiskyAllowed(true)
     ->setRules($rules)
     ->setUsingCache(false)
