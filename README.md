@@ -2,9 +2,9 @@
 Integration Kit for LinkQu.id
 
 ## Requirements
-- PHP 7.0+
+- PHP v7.0.0+
 - PHP JSON Extension
-- [Guzzle, PHP HTTP Client](https://github.com/guzzle/guzzle)
+- [Guzzle, PHP HTTP Client](https://github.com/guzzle/guzzle) v7.0.0+
 
 ## Installation
 
