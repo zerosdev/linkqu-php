@@ -50,4 +50,64 @@ trait Getter
     {
         return $this->debugs;
     }
+
+    public function expired()
+    {
+        return $this->expired ?? null;
+    }
+
+    public function amount()
+    {
+        return $this->amount ?? null;
+    }
+
+    public function customerId()
+    {
+        return $this->customerId ?? null;
+    }
+
+    public function partnerRef()
+    {
+        return $this->partnerRef ?? null;
+    }
+
+    public function customerPhone()
+    {
+        return $this->customerPhone ?? null;
+    }
+
+    public function customerEmail()
+    {
+        return $this->customerEmail ?? null;
+    }
+
+    public function customerName()
+    {
+        return $this->customerName ?? null;
+    }
+
+    public function retailCode()
+    {
+        return $this->retailCode ?? null;
+    }
+
+    public function bankCode()
+    {
+        return $this->bankCode ?? null;
+    }
+
+    public function eWalletPhone()
+    {
+        return $this->eWalletPhone ?? null;
+    }
+
+    public function billTitle()
+    {
+        return $this->billTitle ?? null;
+    }
+
+    public function items()
+    {
+        return $this->items ?? [];
+    }
 }

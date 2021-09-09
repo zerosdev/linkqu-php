@@ -12,6 +12,10 @@
         {
             "name": "ZerosDev",
             "email": "admin@zeros.co.id"
+        },
+        {
+            "name": "Suyadi",
+            "email": "suyadi.1992@gmail.com"
         }
     ],
     "minimum-stability": "dev",
