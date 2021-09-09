@@ -97,7 +97,7 @@ class Client extends Base
      *
      * @param string $message
      */
-    public function addDebug($message)
+    public function addDebug(string $message)
     {
         if ($this->debug) {
             $this->debugs[] = $message;
@@ -112,7 +112,7 @@ class Client extends Base
      * @param string $message
      * @param bool   $safeToClient
      */
-    public function addError($message, bool $safeToClient = false)
+    public function addError(string $message, bool $safeToClient = false)
     {
         $this->errors[] = [
             'message' => $message,
@@ -131,19 +131,22 @@ class Client extends Base
      *
      * @return \stdClass|false
      */
-    public function post($endpoint, array $params = [], array $headers = [])
+    public function post(string $endpoint, array $params = [], array $headers = [])
     {
         try {
             $response = $this->connector->post(ltrim($endpoint, '/'), [
-                'json'          => $params,
-                'headers'       => $headers
+                'json' => $params,
+                'headers' => $headers
             ]);
+
             $body = $response->getBody()->getContents();
             $data = json_decode($body);
+
             if (json_last_error() !== JSON_ERROR_NONE) {
                 $this->addDebug($body);
                 throw new Exception("Invalid JSON response");
             }
+
             return $data;
         } catch (Exception $e) {
             $this->addError($e->getMessage(), ($e instanceof SendableException));
