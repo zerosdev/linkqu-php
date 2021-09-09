@@ -21,5 +21,7 @@ class Base
     protected $pin;
 
     protected $debug = false;
-    protected $errors = false;
+
+    protected $debugs = [];
+    protected $errors = [];
 }
