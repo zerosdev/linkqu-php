@@ -41,8 +41,8 @@ class Client extends Base
     }
 
     /**
-     * Instance kelas Administration.
-     * Untuk mendapatkan data bank aktif beserta kode bank.
+     * Create new Administration instance.
+     * Use this to retrieve activated banks and their codes.
      *
      * @param Closure|null $closure
      *
@@ -62,8 +62,8 @@ class Client extends Base
     }
 
     /**
-     * Instance kelas Transaction.
-     * Untuk menjalankan transaksi pembayaran serta refund.
+     * Create new Transaction instance.
+     * Use this to process the transaction and/or refund.
      *
      * @param Closure|null $closure
      *
@@ -83,8 +83,8 @@ class Client extends Base
     }
 
     /**
-     * Instance kelas Transfer.
-     * Untuk menjalankan transaksi transfer bank.
+     * Create new Transfer instance.
+     * Use this to process the bank transfer.
      *
      * @param Closure|null $closure
      *
@@ -104,8 +104,8 @@ class Client extends Base
     }
 
     /**
-     * Instance kelas Report.
-     * Untuk pengecekan transaksi pembayaran setelah pembayaran.
+     * Create new Report instance.
+     * Use this to check the payment transaction details.
      *
      * @param Closure|null $closure
      *
@@ -125,7 +125,7 @@ class Client extends Base
     }
 
     /**
-     * Tambahkan debug message.
+     * Add debug message.
      *
      * @param string $message
      */
@@ -139,7 +139,7 @@ class Client extends Base
     }
 
     /**
-     * Tambahkan error message.
+     * Add error message.
      *
      * @param string $message
      * @param bool   $safeToClient
@@ -155,9 +155,9 @@ class Client extends Base
     }
 
     /**
-     * Cek jika ada error
+     * Is there any error?
      *
-     * @return boolean
+     * @return bool
      */
     public function hasError()
     {
@@ -165,8 +165,7 @@ class Client extends Base
     }
 
     /**
-     * Reset error messages
-     *
+     * Reset error messages.
      */
     public function resetError()
     {
@@ -175,8 +174,7 @@ class Client extends Base
     }
 
     /**
-     * Reset debug messages
-     *
+     * Reset debug messages.
      */
     public function resetDebug()
     {
@@ -185,7 +183,7 @@ class Client extends Base
     }
 
     /**
-     * Jalankan POST request.
+     * Run a POST request.
      *
      * @param string $endpoint
      * @param array  $params
@@ -229,7 +227,7 @@ class Client extends Base
     }
 
     /**
-     * Jalankan GET request.
+     * Run a GET request.
      *
      * @param string $endpoint
      * @param array  $params
