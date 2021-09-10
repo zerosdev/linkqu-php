@@ -13,7 +13,7 @@ class Facade extends LaravelFacade
      *
      * @return string
      */
-    protected function getFacadeAccessor()
+    protected static function getFacadeAccessor()
     {
         return 'linkqu';
     }
