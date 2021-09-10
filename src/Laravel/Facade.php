@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace ZerosDev\LinkQu\Laravel;
 
+use ZerosDev\LinkQu\Client;
+
 use Illuminate\Support\Facades\Facade as LaravelFacade;
 
 class Facade extends LaravelFacade
@@ -15,6 +17,6 @@ class Facade extends LaravelFacade
      */
     protected static function getFacadeAccessor()
     {
-        return 'linkqu';
+        return Client::class;
     }
 }
