@@ -180,7 +180,7 @@ class Client extends Base
      */
     public function resetDebug()
     {
-        $this->errors = [];
+        $this->debugs = [];
         return $this;
     }
 
