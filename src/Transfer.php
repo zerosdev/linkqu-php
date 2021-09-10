@@ -28,9 +28,9 @@ class Transfer extends Base
     }
 
     /**
-     * Inquiry/cek nomor rekening valid atau tidak
+     * Inquiry/account number validity check.
      *
-     * @param  Closure $closure
+     * @param Closure $closure
      *
      * @return \stdClass|false
      */
@@ -51,11 +51,10 @@ class Transfer extends Base
     }
 
     /**
-     * Transfer ke nomor rekening bank
-     * Lakukan inquiry sebelum memproses pengiriman untuk
-     * Memastikan rekening tujuan valid dan sudah sesuai
+     * Transfer to bank account number.
+     * Make an inquiry before processing to ensure the destination account is valid.
      *
-     * @param  Closure $closure
+     * @param Closure $closure
      *
      * @return \stdClass|false
      */
@@ -77,9 +76,9 @@ class Transfer extends Base
     }
 
     /**
-     * Transfer ke nomor rekening bank tanpa proses inquiry
+     * Transfer to bank account number without inquiry process.
      *
-     * @param  Closure $closure
+     * @param Closure $closure
      *
      * @return \stdClass|false
      */
@@ -100,9 +99,9 @@ class Transfer extends Base
     }
 
     /**
-     * Inquiry/cek nomor e-wallet/e-money valid atau tidak
+     * Inquiry/account number validity check for e-Wallet/e-Money.
      *
-     * @param  Closure $closure
+     * @param Closure $closure
      *
      * @return \stdClass|false
      */
@@ -123,11 +122,10 @@ class Transfer extends Base
     }
 
     /**
-     * Transfer ke nomor e-wallet/e-money
-     * Lakukan inquiry sebelum memproses pengiriman untuk
-     * Memastikan nomor e-wallet/e-money tujuan valid dan sudah sesuai
+     * Transfer to e-Wallet/e-Money.
+     * Make an inquiry before processing to ensure the destination account is valid.
      *
-     * @param  Closure $closure
+     * @param Closure $closure
      *
      * @return \stdClass|false
      */
@@ -149,9 +147,9 @@ class Transfer extends Base
     }
 
     /**
-     * Transfer ke nomor e-wallet/e-money tanpa proses inquiry
+     * Transfer to bank account number without inquiry process.
      *
-     * @param  Closure $closure
+     * @param Closure $closure
      *
      * @return \stdClass|false
      */

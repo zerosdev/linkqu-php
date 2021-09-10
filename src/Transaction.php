@@ -13,14 +13,14 @@ class Transaction extends Base
     /**
      * HTTP Requestor client.
      *
-     * @var ZerosDev\LinkQu\Client
+     * @var Client
      */
     protected $client;
 
     /**
-     * Constructor.
+     * Condstructor.
      *
-     * @param ZerosDev\LinkQu\Client $client
+     * @param Client $client
      */
     public function __construct(Client $client)
     {
@@ -28,9 +28,10 @@ class Transaction extends Base
     }
 
     /**
-     * Create Permata Virtual Account
+     * Create Virtual Account for Permata bank.
+     * This service will returned Virtual Account Number to be paid one time only.
      *
-     * @param  Closure $closure
+     * @param Closure $closure
      *
      * @return \stdClass|false
      */
@@ -55,11 +56,12 @@ class Transaction extends Base
     }
 
     /**
-     * Create Other Bank Virtual Account
+     * Create Virtual Account for others banks.
+     * This service will returned Virtual Account Number to be paid one time only.
      *
-     * @param  Closure $closure
+     * @param Closure $closure
      *
-     * @return \stdClass|false
+     * @return \stdClass|flase
      */
     public function createVa(Closure $closure)
     {
@@ -70,7 +72,7 @@ class Transaction extends Base
             'amount'            => $this->amount(),
             'customer_id'       => $this->customerId(),
             'partner_reff'      => $this->partnerRef(),
-            'customer_name'    => $this->customerName(),
+            'customer_name'     => $this->customerName(),
             'customer_phone'    => $this->customerPhone(),
             'customer_email'    => $this->customerEmail(),
             'bank_code'         => $this->bankCode(),
@@ -82,11 +84,12 @@ class Transaction extends Base
     }
 
     /**
-     * Create Dedicated (Open Amount) Virtual Account
+     * Create Dedicated Virtual Account.
+     * Create Bank Virtual Account that never expires and free amount.
      *
-     * @param  Closure $closure
+     * @param Closure $closure
      *
-     * @return \stdClass|false
+     * @return \stdClass|flase
      */
     public function createDedicatedVa(Closure $closure)
     {
@@ -106,9 +109,10 @@ class Transaction extends Base
     }
 
     /**
-     * Update Dedicated (Open Amount) Virtual Account
+     * Update Dedicated Virtual Account.
+     * For updating virtual account data such as email, name, and phone.
      *
-     * @param  Closure $closure
+     * @param Closure $closure
      *
      * @return \stdClass|false
      */
@@ -128,11 +132,10 @@ class Transaction extends Base
 
         return $this->client->post('linkqu-partner/transaction/create/vadedicated/update', $params);
     }
-
     /**
-     * Create Retail
+     * For receiving funds from Retail Market.
      *
-     * @param  Closure $closure
+     * @param Closure $closure
      *
      * @return \stdClass|false
      */
@@ -157,9 +160,9 @@ class Transaction extends Base
     }
 
     /**
-     * Create QRIS
+     * For receiving funds from QRIS (QR Code)
      *
-     * @param  Closure $closure
+     * @param Closure $closure
      *
      * @return \stdClass|false
      */
@@ -183,9 +186,10 @@ class Transaction extends Base
     }
 
     /**
-     * Create OVO Push
+     * OVO Create Payment - Push to OVO App.
+     * For receiving funds from Ewallet Apps.
      *
-     * @param  Closure $closure
+     * @param Closure $closure
      *
      * @return \stdClass|false
      */
@@ -218,9 +222,11 @@ class Transaction extends Base
     }
 
     /**
-     * Create E-Wallet Payment
+     * For receiving funds from Ewallet Apps.
+     * This will return a payment url.
+     * Partner should open the url to pay their order.
      *
-     * @param  Closure $closure
+     * @param Closure $closure
      *
      * @return \stdClass|false
      */
