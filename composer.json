@@ -3,7 +3,7 @@
     "description": "Unofficial Integration Kit for LinkQu.id",
     "type": "library",
     "require": {
-        "guzzlehttp/guzzle": "^7.0.0",
+        "guzzlehttp/guzzle": "^6.5",
         "php": ">=7.0.0",
         "ext-json": "*"
     },
