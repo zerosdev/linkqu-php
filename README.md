@@ -4,7 +4,7 @@ Unofficial Integration Kit for LinkQu.id
 ## Requirements
 - PHP v7.0.0+
 - PHP JSON Extension
-- [Guzzle, PHP HTTP Client](https://github.com/guzzle/guzzle) v7.0.0+
+- [Guzzle, PHP HTTP Client](https://github.com/guzzle/guzzle) v6.5+
 
 ## Installation
 
@@ -74,9 +74,7 @@ $linkqu = new Client(function($client) {
         ->setPin('2K2NPCBBNNTovgB');
 });
 
-$transaction = $linkqu->transaction();
-
-$result = $transaction->createVa(function($va) {
+$result = $linkqu->transaction()->createVa(function($va) {
     $va->setAmount(10000)
     ->setExpired(60)
     ->setCustomerId(uniqid())
