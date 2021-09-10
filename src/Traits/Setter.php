@@ -40,16 +40,16 @@ trait Setter
         return $this;
     }
 
-    public function setDebug(bool $debug = true)
+    public function setDebug(bool $debug)
     {
         $this->debug = $debug;
         return $this;
     }
 
-    public function setExpired(int $minute, $format = 'YmdHis')
+    public function setExpired(int $minute, string $format = 'YmdHis')
     {
-        $dt = new DateTime();
-        $this->expired = $dt->setTimestamp(time() + ($minute*60))
+        $date = new DateTime();
+        $this->expired = $date->setTimestamp(time() + ($minute * 60))
             ->setTimezone(new DateTimeZone('Asia/Jakarta'))
             ->format($format);
 
@@ -62,13 +62,13 @@ trait Setter
         return $this;
     }
 
-    public function setCustomerId($customerId)
+    public function setCustomerId(string $customerId)
     {
         $this->customerId = $customerId;
         return $this;
     }
 
-    public function setPartnerRef($partnerRef)
+    public function setPartnerRef(string $partnerRef)
     {
         $this->partnerRef = $partnerRef;
         return $this;
@@ -98,7 +98,7 @@ trait Setter
         return $this;
     }
 
-    public function setBankCode($bankCode)
+    public function setBankCode(string $bankCode)
     {
         $this->bankCode = $bankCode;
         return $this;
@@ -116,26 +116,14 @@ trait Setter
         return $this;
     }
 
-    public function setItem(string $name, int $price, string $image)
+    public function setItem(string $name, int $price, string $imageUrl)
     {
         $this->items[] = [
             'name'  => $name,
             'price' => $price,
-            'image' => $image
+            'image' => $imageUrl
         ];
 
-        return $this;
-    }
-
-    public function setAccountNumber(string $accountNumber)
-    {
-        $this->accountNumber = $accountNumber;
-        return $this;
-    }
-
-    public function setInquiryRef(string $inquiryRef)
-    {
-        $this->inquiryRef = $inquiryRef;
         return $this;
     }
 }
