@@ -120,6 +120,6 @@ trait Getter
 
     public function inquiryRef()
     {
-        return $this->inquiryRef;
+        return $this->inquiryRef ?? null;
     }
 }
