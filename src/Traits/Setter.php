@@ -126,4 +126,16 @@ trait Setter
 
         return $this;
     }
+
+    public function setAccountNumber(string $accountNumber)
+    {
+        $this->accountNumber = $accountNumber;
+        return $this;
+    }
+
+    public function setInquiryRef(string $inquiryRef)
+    {
+        $this->inquiryRef = $inquiryRef;
+        return $this;
+    }
 }
