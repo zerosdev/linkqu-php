@@ -46,6 +46,23 @@ class Report extends Base
     }
 
     /**
+     * Cek status transaksi virtual account.
+     * Digunakan untuk pengecekan transaksi pembayaran virtual account setelah pembayaran.
+     *
+     * @return \stdClass|false
+     */
+    public function statusVA(string $partnerRef)
+    {
+        $endpoint = 'linkqu-partner/transaction/payment/va/checkstatus';
+        $params = [
+            'username' => $this->client->username(),
+            'partnerreff' => (string) $partnerRef,
+        ];
+
+        return $this->client->get($endpoint, $params);
+    }
+
+    /**
      * Report Transaction.
      * Digunakan untuk pengecekan laporan transaksi berdasarkan range tanggal tertentu.
      *
