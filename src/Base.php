@@ -33,6 +33,11 @@ class Base
     protected $clientSecret;
 
     /**
+     * API client secret
+     */
+    protected $serverKey;
+
+    /**
      * API username
      */
     protected $username;

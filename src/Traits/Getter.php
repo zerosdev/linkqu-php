@@ -28,6 +28,11 @@ trait Getter
         return $this->clientSecret ?? null;
     }
 
+    public function serverKey()
+    {
+        return $this->serverKey ?? null;
+    }
+
     public function username()
     {
         return $this->username ?? null;

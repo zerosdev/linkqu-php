@@ -1,23 +1,25 @@
 # linkqu-php
+
 Unofficial Integration Kit for LinkQu.id
 
 ## Requirements
-- PHP v7.0.0+
-- PHP JSON Extension
-- [Guzzle, PHP HTTP Client](https://github.com/guzzle/guzzle) v6.5+
+
+-   PHP v7.0.0+
+-   PHP JSON Extension
+-   [Guzzle, PHP HTTP Client](https://github.com/guzzle/guzzle) v6.5+
 
 ## Installation
 
 1. Run command
-<pre><code>composer require zerosdev/linkqu-php</code></pre>
+ <pre><code>composer require zerosdev/linkqu-php</code></pre>
 
 2. Run command
-<pre><code>composer dump-autoload</code></pre>
+ <pre><code>composer dump-autoload</code></pre>
 
 ### The following steps only needed if you are using Laravel
 
 3. Then
-<pre><code>php artisan vendor:publish --provider="ZerosDev\LinkQu\Laravel\ServiceProvider"</code></pre>
+ <pre><code>php artisan vendor:publish --provider="ZerosDev\LinkQu\Laravel\ServiceProvider"</code></pre>
 
 4. Edit **config/linkqu.php** and put your API credentials
 
@@ -70,6 +72,7 @@ $linkqu = new Client(function($client) {
     $client->setMode(Constant::DEVELOPMENT)
         ->setClientId('testing')
         ->setClientSecret('123')
+        ->setServerKey('LinkQu@2020')
         ->setUsername('LI307GXIN')
         ->setPin('2K2NPCBBNNTovgB');
 });
