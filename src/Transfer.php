@@ -16,7 +16,7 @@ class Transfer extends Base
      * @var Client
      */
     protected $client;
-
+    protected $signature;
     /**
      * Constructor.
      *
@@ -25,6 +25,7 @@ class Transfer extends Base
     public function __construct(Client $client)
     {
         $this->client = $client;
+        $this->signature = new Signature($client);
     }
 
     /**
@@ -38,13 +39,21 @@ class Transfer extends Base
     {
         $closure($this);
 
+        // create signature
+        $regex = '/[^0-9a-zA-Z]/';
+        // path for signature
+        $path = '/transaction/withdraw/inquiry';
+        // secondvalue
+        $secondValue = strtolower(preg_replace($regex, "", $this->amount().$this->accountNumber().$this->bankCode().$this->partnerRef().$this->client->clientId()));
+
         $params = [
             'username'      => $this->client->username(),
             'pin'           => $this->client->pin(),
             'bankcode'      => $this->bankCode(),
             'accountnumber' => $this->accountNumber(),
             'amount'        => $this->amount(),
-            'partner_reff'  => $this->partnerRef()
+            'partner_reff'  => $this->partnerRef(),
+            'signature'     => $this->signature->create($path, 'POST', $secondValue)
         ];
 
         return $this->client->post('linkqu-partner/transaction/withdraw/inquiry', $params);
@@ -62,6 +71,13 @@ class Transfer extends Base
     {
         $closure($this);
 
+         // create signature
+         $regex = '/[^0-9a-zA-Z]/';
+         // path for signature
+         $path = '/transaction/withdraw/payment';
+         // secondvalue
+         $secondValue = strtolower(preg_replace($regex, "", $this->amount().$this->accountNumber().$this->bankCode().$this->partnerRef().$this->inquiryRef().$this->client->clientId()));
+
         $params = [
             'username'      => $this->client->username(),
             'pin'           => $this->client->pin(),
@@ -69,7 +85,8 @@ class Transfer extends Base
             'accountnumber' => $this->accountNumber(),
             'amount'        => $this->amount(),
             'partner_reff'  => $this->partnerRef(),
-            'inquiry_reff'  => $this->inquiryRef()
+            'inquiry_reff'  => $this->inquiryRef(),
+            'signature'     => $this->signature->create($path, 'POST', $secondValue)
         ];
 
         return $this->client->post('linkqu-partner/transaction/withdraw/payment', $params);
@@ -109,6 +126,13 @@ class Transfer extends Base
     {
         $closure($this);
 
+         // create signature
+         $regex = '/[^0-9a-zA-Z]/';
+         // path for signature
+         $path = '/transaction/reload/inquiry';
+         // secondvalue
+         $secondValue = strtolower(preg_replace($regex, "", $this->amount().$this->accountNumber().$this->bankCode().$this->partnerRef().$this->inquiryRef().$this->client->clientId()));
+
         $params = [
             'username'      => $this->client->username(),
             'pin'           => $this->client->pin(),
@@ -116,6 +140,7 @@ class Transfer extends Base
             'accountnumber' => $this->accountNumber(),
             'amount'        => $this->amount(),
             'partner_reff'  => $this->partnerRef(),
+            'signature'     => $this->signature->create($path, 'POST', $secondValue)
         ];
 
         return $this->client->post('linkqu-partner/transaction/reload/inquiry', $params);
@@ -132,6 +157,13 @@ class Transfer extends Base
     public function sendEmoney(Closure $closure)
     {
         $closure($this);
+
+        // create signature
+        $regex = '/[^0-9a-zA-Z]/';
+        // path for signature
+        $path = '/transaction/reload/payment';
+        // secondvalue
+        $secondValue = strtolower(preg_replace($regex, "", $this->amount().$this->accountNumber().$this->bankCode().$this->partnerRef().$this->client->clientId()));
 
         $params = [
             'username'      => $this->client->username(),

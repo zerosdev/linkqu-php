@@ -28,4 +28,9 @@ return [
      */
     'pin'           => env('LINKQU_PIN', 'pin'),
 
+    /**
+     * API Serverkey
+     */
+    'server_key'    => env('LINKQU_SERVER_KEY', 'server key'),
+
 ];

@@ -28,6 +28,12 @@ trait Setter
         return $this;
     }
 
+    public function setServerKey(string $serverKey)
+    {
+        $this->serverKey = $serverKey;
+        return $this;
+    }
+
     public function setUsername(string $username)
     {
         $this->username = $username;

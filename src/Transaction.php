@@ -16,7 +16,7 @@ class Transaction extends Base
      * @var Client
      */
     protected $client;
-
+    protected $signature;
     /**
      * Condstructor.
      *
@@ -25,6 +25,7 @@ class Transaction extends Base
     public function __construct(Client $client)
     {
         $this->client = $client;
+        $this->signature = new Signature($client);
     }
 
     /**
@@ -38,7 +39,12 @@ class Transaction extends Base
     public function createVaPermata(Closure $closure)
     {
         $closure($this);
-
+        // create signature
+        $regex = '/[^0-9a-zA-Z]/';
+        // path for signature
+        $path = '/transaction/create/vapermata';
+        // secondvalue
+        $secondValue = strtolower(preg_replace($regex, "", $this->amount() . $this->expired()  . $this->partnerRef() . $this->customerId() . $this->customerName() . $this->customerEmail() . $this->client->clientId()));
         $params = [
             'expired'           => $this->expired(),
             'amount'            => $this->amount(),
@@ -47,9 +53,9 @@ class Transaction extends Base
             'customer_phone'    => $this->customerPhone(),
             'customer_email'    => $this->customerEmail(),
             'customer_name'     => $this->customerName(),
-            'bank_code'         => '013',
             'username'          => $this->client->username(),
-            'pin'               => $this->client->pin()
+            'pin'               => $this->client->pin(),
+            'signature'         => $this->signature->create($path, 'POST', $secondValue)
         ];
 
         return $this->client->post('linkqu-partner/transaction/create/vapermata', $params);
@@ -67,6 +73,12 @@ class Transaction extends Base
     {
         $closure($this);
 
+        // create signature
+        $regex = '/[^0-9a-zA-Z]/';
+        // path for signature
+        $path = '/transaction/create/va';
+        // secondvalue
+        $secondValue = strtolower(preg_replace($regex, "", $this->amount() . $this->expired() . $this->bankCode() . $this->partnerRef() . $this->customerId() . $this->customerName() . $this->customerEmail() . $this->client->clientId()));
         $params = [
             'expired'           => $this->expired(),
             'amount'            => $this->amount(),
@@ -77,7 +89,8 @@ class Transaction extends Base
             'customer_email'    => $this->customerEmail(),
             'bank_code'         => $this->bankCode(),
             'username'          => $this->client->username(),
-            'pin'               => $this->client->pin()
+            'pin'               => $this->client->pin(),
+            'signature'         => $this->signature->create($path, 'POST', $secondValue)
         ];
 
         return $this->client->post('linkqu-partner/transaction/create/va', $params);
@@ -95,6 +108,13 @@ class Transaction extends Base
     {
         $closure($this);
 
+        // create signature
+        $regex = '/[^0-9a-zA-Z]/';
+        // path for signature
+        $path = '/transaction/create/vadedicated/add';
+        // secondvalue
+        $secondValue = strtolower(preg_replace($regex, "", $this->bankCode() . $this->customerId() . $this->customerName() . $this->customerEmail() . $this->client->clientId()));
+
         $params = [
             'customer_id'       => $this->customerId(),
             'customer_name'     => $this->customerName(),
@@ -102,7 +122,8 @@ class Transaction extends Base
             'customer_email'    => $this->customerEmail(),
             'bank_code'         => $this->bankCode(),
             'username'          => $this->client->username(),
-            'pin'               => $this->client->pin()
+            'pin'               => $this->client->pin(),
+            'signature'         => $this->signature->create($path, 'POST', $secondValue)
         ];
 
         return $this->client->post('linkqu-partner/transaction/create/vadedicated/add', $params);
@@ -143,6 +164,13 @@ class Transaction extends Base
     {
         $closure($this);
 
+        // create signature
+        $regex = '/[^0-9a-zA-Z]/';
+        // path for signature
+        $path = '/transaction/create/retail';
+        // secondvalue
+        $secondValue = strtolower(preg_replace($regex, "", $this->amount() . $this->expired() . $this->retailCode() . $this->partnerRef() . $this->customerId() . $this->customerName() . $this->customerEmail() . $this->client->clientId()));
+
         $params = [
             'customer_id'       => $this->customerId(),
             'customer_name'     => $this->customerName(),
@@ -153,7 +181,8 @@ class Transaction extends Base
             'partner_reff'      => $this->partnerRef(),
             'expired'           => $this->expired(),
             'username'          => $this->client->username(),
-            'pin'               => $this->client->pin()
+            'pin'               => $this->client->pin(),
+            'signature'         => $this->signature->create($path, 'POST', $secondValue)
         ];
 
         return $this->client->post('linkqu-partner/transaction/create/retail', $params);
@@ -170,6 +199,13 @@ class Transaction extends Base
     {
         $closure($this);
 
+        // create signature
+        $regex = '/[^0-9a-zA-Z]/';
+        // path for signature
+        $path = '/transaction/create/qris';
+        // secondvalue
+        $secondValue = strtolower(preg_replace($regex, "", $this->amount() . $this->expired() . $this->partnerRef() . $this->customerId() . $this->customerName() . $this->customerEmail() . $this->client->clientId()));
+
         $params = [
             'customer_id'       => $this->customerId(),
             'customer_name'     => $this->customerName(),
@@ -179,7 +215,8 @@ class Transaction extends Base
             'partner_reff'      => $this->partnerRef(),
             'expired'           => $this->expired(),
             'username'          => $this->client->username(),
-            'pin'               => $this->client->pin()
+            'pin'               => $this->client->pin(),
+            'signature'         => $this->signature->create($path, 'POST', $secondValue)
         ];
 
         return $this->client->post('linkqu-partner/transaction/create/qris', $params);
@@ -197,6 +234,13 @@ class Transaction extends Base
     {
         $closure($this);
 
+        // create signature
+        $regex = '/[^0-9a-zA-Z]/';
+        // path for signature
+        $path = '/transaction/create/ovopush';
+        // secondvalue
+        $secondValue = strtolower(preg_replace($regex, "", $this->amount() . $this->expired() . "PAYOVO" . $this->partnerRef() . $this->customerId() . $this->customerName() . $this->customerEmail() . $this->eWalletPhone() . $this->client->clientId()));
+
         $params = [
             'amount'            => $this->amount(),
             'partner_reff'      => $this->partnerRef(),
@@ -210,6 +254,7 @@ class Transaction extends Base
             'customer_email'    => $this->customerEmail(),
             'ewallet_phone'     => $this->eWalletPhone(),
             'bill_title'        => $this->billTitle(),
+            'signature'         => $this->signature->create($path, 'POST', $secondValue)
         ];
 
         foreach ($this->items() as $i => $item) {
@@ -234,6 +279,13 @@ class Transaction extends Base
     {
         $closure($this);
 
+        // create signature
+        $regex = '/[^0-9a-zA-Z]/';
+        // path for signature
+        $path = '/transaction/create/paymentewallet';
+        // secondvalue
+        $secondValue = strtolower(preg_replace($regex, "", $this->amount() . $this->expired() . $this->retailCode() . $this->partnerRef() . $this->customerId() . $this->customerName() . $this->customerEmail() . $this->eWalletPhone() . $this->client->clientId()));
+
         $params = [
             'amount'            => $this->amount(),
             'partner_reff'      => $this->partnerRef(),
@@ -247,6 +299,7 @@ class Transaction extends Base
             'customer_email'    => $this->customerEmail(),
             'ewallet_phone'     => $this->eWalletPhone(),
             'bill_title'        => $this->billTitle(),
+            'signature'         => $this->signature->create($path, 'POST', $secondValue)
         ];
 
         foreach ($this->items() as $i => $item) {

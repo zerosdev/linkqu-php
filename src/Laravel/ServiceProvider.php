@@ -24,6 +24,7 @@ class ServiceProvider extends LaravelServiceProvider implements DeferrableProvid
                     ->setClientId(config('linkqu.client_id'))
                     ->setClientSecret(config('linkqu.client_secret'))
                     ->setUsername(config('linkqu.username'))
+                    ->setServerKey(config('linkqu.serverkey'))
                     ->setPin(config('linkqu.pin'));
             });
         });
