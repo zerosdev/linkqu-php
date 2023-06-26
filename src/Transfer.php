@@ -71,12 +71,12 @@ class Transfer extends Base
     {
         $closure($this);
 
-         // create signature
-         $regex = '/[^0-9a-zA-Z]/';
-         // path for signature
-         $path = '/transaction/withdraw/payment';
-         // secondvalue
-         $secondValue = strtolower(preg_replace($regex, "", $this->amount().$this->accountNumber().$this->bankCode().$this->partnerRef().$this->inquiryRef().$this->client->clientId()));
+        // create signature
+        $regex = '/[^0-9a-zA-Z]/';
+        // path for signature
+        $path = '/transaction/withdraw/payment';
+        // secondvalue
+        $secondValue = strtolower(preg_replace($regex, "", $this->amount().$this->accountNumber().$this->bankCode().$this->partnerRef().$this->inquiryRef().$this->client->clientId()));
 
         $params = [
             'username'      => $this->client->username(),
@@ -126,12 +126,12 @@ class Transfer extends Base
     {
         $closure($this);
 
-         // create signature
-         $regex = '/[^0-9a-zA-Z]/';
-         // path for signature
-         $path = '/transaction/reload/inquiry';
-         // secondvalue
-         $secondValue = strtolower(preg_replace($regex, "", $this->amount().$this->accountNumber().$this->bankCode().$this->partnerRef().$this->inquiryRef().$this->client->clientId()));
+        // create signature
+        $regex = '/[^0-9a-zA-Z]/';
+        // path for signature
+        $path = '/transaction/reload/inquiry';
+        // secondvalue
+        $secondValue = strtolower(preg_replace($regex, "", $this->amount().$this->accountNumber().$this->bankCode().$this->partnerRef().$this->inquiryRef().$this->client->clientId()));
 
         $params = [
             'username'      => $this->client->username(),

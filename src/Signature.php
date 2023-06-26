@@ -5,9 +5,8 @@ namespace ZerosDev\LinkQu;
 use ZerosDev\LinkQu\Base;
 use ZerosDev\LinkQu\Client;
 
-class Signature extends Base 
+class Signature extends Base
 {
-
     /**
      * HTTP Requestor client.
      *
