@@ -24,7 +24,7 @@ class ServiceProvider extends LaravelServiceProvider implements DeferrableProvid
                     ->setClientId(config('linkqu.client_id'))
                     ->setClientSecret(config('linkqu.client_secret'))
                     ->setUsername(config('linkqu.username'))
-                    ->setServerKey(config('linkqu.serverkey'))
+                    ->setServerKey(config('linkqu.server_key'))
                     ->setPin(config('linkqu.pin'));
             });
         });
@@ -38,7 +38,7 @@ class ServiceProvider extends LaravelServiceProvider implements DeferrableProvid
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../../laravel-config.php' => config_path('linkqu.php'),
+            __DIR__ . '/../../laravel-config.php' => config_path('linkqu.php'),
         ]);
     }
 
