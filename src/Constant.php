@@ -24,5 +24,5 @@ class Constant
     /**
      * Base URL for production mode
      */
-    public const URL_PRODUCTION = 'https://gateway-prod-a2.linkqu.id';
+    public const URL_PRODUCTION = 'https://api.linkqu.id';
 }
